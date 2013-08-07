@@ -6,7 +6,7 @@
 Plugin Name: Hashtag
 Plugin URI: http://takien.com/plugins/hashtag
 Description: Converts hashtag strings into clickable link in WordPress. If clicked it will search contents contain same hashtag.
-Version: 0.1
+Version: 0.2
 Author: takien
 Author URI: http://takien.com
 License: GPLv2 or later
@@ -23,9 +23,6 @@ but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
 
-You should have received a copy of the GNU General Public License
-along with this program; if not, write to the Free Software
-Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 defined('ABSPATH') or die();
@@ -46,7 +43,7 @@ if(!class_exists('HashtagPluginOption')) {
 			$hash      = $regular ? '' : '%23';
 			$class     = $class ? $class : 'hashtag';
 			
-			$content = preg_replace('/(^|\s)#(\w*[a-zA-Z_]+\w*)/i', '<span class="'.$class.'">\1#<a href="'.site_url().'?s='.$hash.'\2">\2</a></span>', $content);
+			$content = preg_replace('/(^|\s)?(?<!&)#([^\s]+)/i', '<span class="'.$class.'">\1#<a href="'.site_url().'?s='.$hash.'\2">\2</a></span>', $content);
 			return $content;
 		}
 		
