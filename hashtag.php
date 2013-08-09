@@ -6,7 +6,7 @@
 Plugin Name: Hashtag
 Plugin URI: http://takien.com/plugins/hashtag
 Description: Converts hashtag strings into clickable link in WordPress. If clicked it will search contents contain same hashtag.
-Version: 0.3
+Version: 0.4
 Author: takien
 Author URI: http://takien.com
 License: GPLv2 or later
@@ -42,14 +42,14 @@ if(!class_exists('HashtagPluginOption')) {
 			$class     = easy_options('link_class','hashtag-plugin-option');
 			$hash      = $regular ? '' : '%23';
 			$class     = $class ? $class : 'hashtag';
-			
-			$content = preg_replace('/(^|\s)?(?<!:|\s|&)#([^\s]+)/i', '<span class="'.$class.'">\1#<a href="'.site_url().'?s='.$hash.'\2">\2</a></span>', $content);
+			$content = str_replace('>#','> #',$content);
+			$content = preg_replace('/(?<!:|\s|&|"|\')(\s)#([^\s<]+)/i', '<span class="'.$class.'">\1#<a href="'.site_url().'?s='.$hash.'\2">\2</a></span>', $content);
 			return $content;
 		}
 		
 		function hastag_plugin_enqueue_script( $hook_suffix ) {
 			if(!preg_match('/(hashtag-plugin)/i',$hook_suffix)) return;
-			wp_enqueue_script( 'hashtag-jscolor', plugins_url( 'options/jscolor/jscolor.js' ,__FILE__ ),Array(), 0.1, false );
+			wp_enqueue_script( 'hashtag-jscolor', plugins_url( 'options/jscolor/jscolor.js' ,__FILE__ ),Array(), 0.4, false );
 		}
 		
 		function hashtag_plugin_script() {

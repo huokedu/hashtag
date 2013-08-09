@@ -4,7 +4,7 @@ Tags: hashtag, search, twitter, facebook
 Donate link: http://takien.com/donate
 Requires at least: 3.0
 Tested up to: 3.6
-Stable tag: 0.3
+Stable tag: 0.4
 License: GPLv2 or later
 Use hashtag on WordPress just like on Twitter or Facebook. Word preceded with hash automatically converted into clickable link.
 
@@ -15,7 +15,7 @@ Use hashtag on WordPress just like on Twitter or Facebook. Word preceded with ha
 * Use standard hashtag ( #hashtag )
 * Customizable CSS
 * Hashtag also can be used for regular search
-* Hash on color code and unicode will be skipped
+* Hash on color code, URL and unicode will be skipped
 * Supports for non latin characters
 
 == Screenshots == 
@@ -36,6 +36,9 @@ Just like how you install other plugin.
 -
 
 == Changelog ==
+
+= 0.4 =
+* Fixed: Hashtag will skip hash in link href ( href="#" ) and URL format ( http://example.com/test#hash )
 
 = 0.3 =
 * Fixed: Hashtag now skip hash in color code like `#000CCC` ( thanks to http://josy1024.blogspot.co.at )
